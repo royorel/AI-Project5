@@ -228,7 +228,6 @@ class ExactInference(InferenceModule):
             for newPos, prob in newPosDist.items():
                 allPossible[newPos] += prob*self.beliefs[oldPos]
 
-        allPossible.normalize()
         self.beliefs = allPossible
 
     def getBeliefDistribution(self):
