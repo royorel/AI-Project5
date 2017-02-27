@@ -338,7 +338,14 @@ class ParticleFilter(InferenceModule):
         a belief distribution.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+	old_particles = self.particles
+	new_particles = []
+	for old in old_particles:
+	    newPosDist = self.getPositionDistribution(self.setGhostPosition(gameState,
+		    old))
+	    new_particles.append(util.sample(newPosDist))
+	self.particles = new_particles
+	return self.particles
 
     def getBeliefDistribution(self):
         """
